@@ -3,25 +3,25 @@ package com.artemgggi.fordogs;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 import java.util.Properties;
 
 @SpringBootApplication(exclude = { //
         DataSourceAutoConfiguration.class, //
         DataSourceTransactionManagerAutoConfiguration.class, //
         HibernateJpaAutoConfiguration.class })
+
 public class FordogsApplication {
     @Autowired
     private Environment env;
@@ -36,7 +36,8 @@ public class FordogsApplication {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         // See: application.properties
-        dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
+        dataSource.setDriverClassName(Objects.requireNonNull(
+                env.getProperty("spring.datasource.driver-class-name")));
         dataSource.setUrl(env.getProperty("spring.datasource.url"));
         dataSource.setUsername(env.getProperty("spring.datasource.username"));
         dataSource.setPassword(env.getProperty("spring.datasource.password"));
@@ -60,12 +61,12 @@ public class FordogsApplication {
 
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 
-        // Package contain entity classes
-        factoryBean.setPackagesToScan(new String[] { "com.artemgggi.fordogs" });
+
+        factoryBean.setPackagesToScan("com.artemgggi.fordogs");
         factoryBean.setDataSource(dataSource);
         factoryBean.setHibernateProperties(properties);
         factoryBean.afterPropertiesSet();
-        //
+
         SessionFactory sf = factoryBean.getObject();
         System.out.println("## getSessionFactory: " + sf);
         return sf;
@@ -74,8 +75,6 @@ public class FordogsApplication {
     @Autowired
     @Bean(name = "transactionManager")
     public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-
-        return transactionManager;
+        return new HibernateTransactionManager(sessionFactory);
     }
 }

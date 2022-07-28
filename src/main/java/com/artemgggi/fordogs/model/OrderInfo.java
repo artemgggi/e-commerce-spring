@@ -1,40 +1,40 @@
-package com.artemgggi.fordogs.entity;
+package com.artemgggi.fordogs.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-@Entity
-@Table(name = "Orders", //
-        uniqueConstraints = { @UniqueConstraint(columnNames = "Order_Num") })
-public class Order implements Serializable {
+public class OrderInfo {
 
-    private static final long serialVersionUID = -2576670215015463100L;
-
-    @Id
-    @Column(name = "ID", length = 50)
     private String id;
-
-    @Column(name = "Order_Date", nullable = false)
     private Date orderDate;
-
-    @Column(name = "Order_Num", nullable = false)
     private int orderNum;
-
-    @Column(name = "Amount", nullable = false)
     private double amount;
 
-    @Column(name = "Customer_Name", length = 255, nullable = false)
     private String customerName;
-
-    @Column(name = "Customer_Address", length = 255, nullable = false)
     private String customerAddress;
-
-    @Column(name = "Customer_Email", length = 128, nullable = false)
     private String customerEmail;
-
-    @Column(name = "Customer_Phone", length = 128, nullable = false)
     private String customerPhone;
+
+    private List<OrderDetailInfo> details;
+
+    public OrderInfo() {
+
+    }
+
+    // Using for Hibernate Query.
+    public OrderInfo(String id, Date orderDate, int orderNum, //
+                     double amount, String customerName, String customerAddress, //
+                     String customerEmail, String customerPhone) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.orderNum = orderNum;
+        this.amount = amount;
+
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+        this.customerEmail = customerEmail;
+        this.customerPhone = customerPhone;
+    }
 
     public String getId() {
         return id;
@@ -98,5 +98,13 @@ public class Order implements Serializable {
 
     public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
+    }
+
+    public List<OrderDetailInfo> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<OrderDetailInfo> details) {
+        this.details = details;
     }
 }

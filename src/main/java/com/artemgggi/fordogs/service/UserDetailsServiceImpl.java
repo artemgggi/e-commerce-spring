@@ -1,5 +1,6 @@
 package com.artemgggi.fordogs.service;
 
+import com.artemgggi.fordogs.dao.AccountDAO;
 import com.artemgggi.fordogs.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
