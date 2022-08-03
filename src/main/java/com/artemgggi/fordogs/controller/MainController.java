@@ -57,7 +57,6 @@ public class MainController {
         else if (target.getClass() == CustomerForm.class) {
             dataBinder.setValidator((Validator) customerFormValidator);
         }
-
     }
 
     @RequestMapping("/403")
@@ -254,7 +253,7 @@ public class MainController {
             product = this.productDAO.findProduct(code);
         }
         if (product != null && product.getImage() != null) {
-            response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+            response.setContentType("image/jpeg");
             response.getOutputStream().write(product.getImage());
         }
         response.getOutputStream().close();

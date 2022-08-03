@@ -4,13 +4,12 @@ import com.artemgggi.fordogs.form.CustomerForm;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
 @Component
-public class CustomerFormValidator {
+public class CustomerFormValidator implements Validator {
 
-    //private EmailValidator emailValidator = EmailValidator.getInstance();
-
-    // This validator only checks for the CustomerForm.
+//    private EmailValidator emailValidator = EmailValidator.getInstance();
 
     public boolean supports(Class<?> clazz) {
         return clazz == CustomerForm.class;
@@ -26,7 +25,7 @@ public class CustomerFormValidator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "NotEmpty.customerForm.address");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "NotEmpty.customerForm.phone");
 
-        //if (!emailValidator.isValid(custInfo.getEmail())) {
-           // errors.rejectValue("email", "Pattern.customerForm.email");
+//        if (!emailValidator.isValid(custInfo.getEmail())) {
+//            errors.rejectValue("email", "Pattern.customerForm.email");
         }
-}
+    }

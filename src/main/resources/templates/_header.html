@@ -6,7 +6,7 @@
 
     <div class="header-bar">
         <th:block sec:authorize="isAuthenticated()">
-            Hello
+            Добро пожаловать
             <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
             &nbsp;|&nbsp;
             <a th:href="@{/admin/logout}">Выйти</a>
