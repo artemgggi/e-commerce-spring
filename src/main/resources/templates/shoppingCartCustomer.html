@@ -9,13 +9,13 @@
 <th:block th:include="/_header"></th:block>
 <th:block th:include="/_menu"></th:block>
 
-<div class="page-title">Enter Customer Information</div>
+<div class="page-title">Заполнить информацию для заказа</div>
 
 <form method="POST" th:object = "${customerForm}" th:action="@{/shoppingCartCustomer}">
 
     <table>
         <tr>
-            <td>Name *</td>
+            <td>ФИО</td>
             <td><input th:field="*{name}" /></td>
             <td>
                   <span class="error-message"
@@ -23,7 +23,7 @@
             </td>
         </tr>
         <tr>
-            <td>Email *</td>
+            <td>Email</td>
             <td><input th:field="*{email}" /></td>
             <td>
                   <span class="error-message"
@@ -31,7 +31,7 @@
             </td>
         </tr>
         <tr>
-            <td>Phone *</td>
+            <td>Телефон</td>
             <td><input th:field="*{phone}" /></td>
             <td>
                   <span class="error-message"
@@ -39,7 +39,7 @@
             </td>
         </tr>
         <tr>
-            <td>Address *</td>
+            <td>Адрес доставки</td>
             <td><input th:field="*{address}" /></td>
             <td>
                   <span class="error-message"

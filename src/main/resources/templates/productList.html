@@ -10,7 +10,7 @@
 <th:block th:include="/_header"></th:block>
 <th:block th:include="/_menu"></th:block>
 
-<div class="page-title">Список товаров</div>
+<div class="page-title">Товары</div>
 
 <div class="product-preview-container" th:each="prodInfo : ${paginationProducts.list}">
     <ul>
@@ -18,7 +18,7 @@
                  th:src="@{|/productImage?code=${prodInfo.code}|}" /></li>
         <li>Артикул <span th:utext="${prodInfo.code}"></span></li>
         <li><span th:utext="${prodInfo.name}"></span></li>
-        <li>Цена <span th:utext="${#numbers.formatDecimal(prodInfo.price,3,2,'COMMA')}"></span></li>
+        <li>Цена <span th:utext="${#numbers.formatDecimal(prodInfo.price,3,2,'COMMA')}"></span> руб</li>
         <li>
             <a th:href="@{|/buyProduct?code=${prodInfo.code}|}">Купить</a>
         </li>

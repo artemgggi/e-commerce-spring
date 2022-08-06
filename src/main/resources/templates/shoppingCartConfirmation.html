@@ -9,19 +9,19 @@
 <th:block th:include="/_header"></th:block>
 <th:block th:include="/_menu"></th:block>
 
-<div class="page-title">Confirmation</div>
+<div class="page-title">Подтверждение заказа</div>
 <div class="customer-info-container">
-    <h3>Customer Information:</h3>
+    <h3>Покупатель</h3>
     <ul>
-        <li>Name: <span th:utext="${myCart.customerInfo.name}"></span></li>
-        <li>Email: <span th:utext="${myCart.customerInfo.email}"></span></li>
-        <li>Phone: <span th:utext="${myCart.customerInfo.phone}"></span></li>
-        <li>Address: <span th:utext="${myCart.customerInfo.address}"></span></li>
+        <li>ФИО <span th:utext="${myCart.customerInfo.name}"></span></li>
+        <li>Email <span th:utext="${myCart.customerInfo.email}"></span></li>
+        <li>Телефон <span th:utext="${myCart.customerInfo.phone}"></span></li>
+        <li>Адрес <span th:utext="${myCart.customerInfo.address}"></span></li>
     </ul>
-    <h3>Cart Summary:</h3>
+    <h3>Сумма заказа</h3>
     <ul>
         <li>Quantity: <span th:utext="${myCart.quantityTotal}"></span>$</li>
-        <li>Total:
+        <li>Всего
             <span class="total"
                   th:utext="${#numbers.formatDecimal(myCart.amountTotal,3,2,'COMMA')}">
                </span>
@@ -45,7 +45,7 @@
         <ul>
             <li>
                 <img class="product-image"
-                     src="@{|/productImage?code=${cartLineInfo.productInfo.code}|}" />
+                     th:src="@{|/productImage?code=${cartLineInfo.productInfo.code}|}"/>
             </li>
             <li>
                 Code: <span th:utext="${cartLineInfo.productInfo.code}"></span>

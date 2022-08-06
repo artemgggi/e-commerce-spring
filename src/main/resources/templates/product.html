@@ -19,7 +19,7 @@
     <table style="text-align:left;">
         <tr>
             <td>Артикул: </td>
-            <td style="color:red;">
+            <td style="color:green;">
                 <input th:field="*{newProduct}" type="hidden" />
                 <input th:if="${productForm.newProduct}" type="text"
                        th:field="*{code}" />
@@ -63,6 +63,7 @@
             <td>
                 <input type="submit" value="Сохранить" />
                 <input type="reset" value="Сбросить" />
+                <input type="button" value="Удалить позицию" th:action="" />
             </td>
         </tr>
     </table>
