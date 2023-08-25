@@ -8,7 +8,6 @@ import com.artemgggi.fordogs.model.OrderDetailInfo;
 import com.artemgggi.fordogs.model.OrderInfo;
 import com.artemgggi.fordogs.pagination.PaginationResult;
 import com.artemgggi.fordogs.validator.ProductFormValidator;
-import org.apache.tomcat.util.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -119,10 +118,8 @@ public class AdminController {
         try {
             productDAO.save(productForm);
         } catch (Exception e) {
-            //Throwable rootCause = ExceptionUtils.getRootCause(e);
-            //String message = rootCause.getMessage();
-           // model.addAttribute("errorMessage", message);
-            // Show product form.
+            String message = e.getMessage();
+            model.addAttribute("errorMessage", message);
             return "product";
         }
 

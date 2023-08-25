@@ -13,9 +13,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>fordogs</name>
     <description>fordogs</description>
+
     <properties>
         <java.version>18</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,6 +34,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
@@ -51,6 +54,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <version>42.5.1</version>
             <scope>runtime</scope>
         </dependency>
 

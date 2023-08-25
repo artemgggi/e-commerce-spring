@@ -19,7 +19,7 @@ public class Account implements Serializable {
     private String userName;
 
     @Column(name = "Encryted_Password", length = 128, nullable = false)
-    private String encrytedPassword;
+    private String encryptedPassword;
 
     @Column(name = "Active", length = 1, nullable = false)
     private boolean active;
@@ -35,12 +35,12 @@ public class Account implements Serializable {
         this.userName = userName;
     }
 
-    public String getEncrytedPassword() {
-        return encrytedPassword;
+    public String getEncryptedPassword() {
+        return encryptedPassword;
     }
 
-    public void setEncrytedPassword(String encrytedPassword) {
-        this.encrytedPassword = encrytedPassword;
+    public void setEncryptedPassword(String encrytedPassword) {
+        this.encryptedPassword = encrytedPassword;
     }
 
     public boolean isActive() {
@@ -61,6 +61,6 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "[" + this.userName + "," + this.encrytedPassword + "," + this.userRole + "]";
+        return "[" + this.userName + "," + this.encryptedPassword + "," + this.userRole + "]";
     }
 }
